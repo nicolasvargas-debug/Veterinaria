@@ -167,7 +167,7 @@ public class Principal {
 			return;
 		}
 		for (Mascota m : clinica.getMascotas()) {
-			System.out.println("Código: " + m.getCodigo() + " | Nombre: " + m.getNombre() + " | Propietario: " + m.getNombrePropietario());
+			System.out.println("Código: " + m.getCodigo().trim() + " | Nombre: " + m.getNombre().trim() + " | Propietario: " + m.getNombrePropietario());
 		}
 	}
 	
@@ -178,7 +178,7 @@ public class Principal {
 		Mascota m = clinica.buscarMascota(codigo);
 		
 		if (m != null) {
-			System.out.println("Mascota encontrada: " + m.getNombre() + " | Tipo: " + m.getTipo());
+			System.out.println("Mascota encontrada: " + m.getNombre().trim() + " | Tipo: " + m.getTipo().trim());
 		} else {
 			System.out.println("No se encontró ninguna mascota con ese código.");
 		}
