@@ -37,4 +37,14 @@ public class ClinicaVeterinaria {
 		return valorTotal;
 		
 	}
+	
+	public boolean registrarMascota(Mascota m) {
+		if (buscarMascota(m.getCodigo()) != null ) {
+			mascotas.add(m);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
