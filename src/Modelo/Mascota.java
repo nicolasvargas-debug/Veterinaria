@@ -87,4 +87,8 @@ public abstract class Mascota {
 		assert nombrePropietario != null && !nombrePropietario.trim().isEmpty() : "Error, el nombre del propietario no puede estar vacio";
 	}
 	
+	public abstract String getTipo();
+	public abstract String emitirSonido();
+	public abstract double calcularCostoCOnsulta();
+	
 }
