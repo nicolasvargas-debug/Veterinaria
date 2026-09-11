@@ -1,7 +1,4 @@
 package Modelo;
-import Modelo.Mascota;
-import Modelo.Vacunable;
-import Modelo.Peluqueable;  
 
 public class Perro extends Mascota implements Vacunable, Peluqueable {
 	private String raza;
