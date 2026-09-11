@@ -32,8 +32,8 @@ public class Principal {
 				
 					case 1:
 						{
-							registrarMascotaMenu();
-							break;
+						registrarMascotaMenu();
+						break;
 						}
 					case 2:
 					{
@@ -82,7 +82,7 @@ public class Principal {
 					}
 					default:
 						System.out.println("Opción no válida. Ingrese un número entre 0 y 9.");
-				
+				}
 				}
 				catch (NumberFormatException e) {
 					System.out.println("Error, debe ingresar un numero entero");
@@ -126,9 +126,63 @@ public class Principal {
         	System.out.println("Tipo de mascota NO valido");
         	return;
         	}
-        
-        
-        
-    }
+        System.out.println("Ingrese el codigo:");
+		String codigo = sc.nextLine();
+		System.out.println("Ingrese el nombre:");
+		String nombreMascota = sc.nextLine();
+		
+		System.out.println("Ingrese la edad (años):");
+		int edad = Integer.parseInt(sc.nextLine().trim());
+		
+		System.out.println("Ingrese el peso (kg):");
+		double peso = Double.parseDouble(sc.nextLine().trim().replace(',', '.'));
+		
+		System.out.println("Ingrese el nombre del propietario:");
+		String propietario = sc.nextLine();
+		
+		Mascota nuevaMascota = null;
+		
+		if (Tipo == 1) {
+			nuevaMascota = new Perro(codigo, nombreMascota, edad, peso, propietario);
+		} else if (Tipo == 2) {
+			nuevaMascota = new Gato(codigo, nombreMascota, edad, peso, propietario);
+		} else if (Tipo == 3) {
+			System.out.println("xd");
+			return;
+		}
+		if (nuevaMascota != null) {
+			boolean exito = clinica.registrarMascota(nuevaMascota);
+			if (exito) {
+				System.out.println("¡Mascota registrada exitosamente!");
+			} else {
+				System.out.println("No se pudo registrar la mascota.");
+			}
+		}
+	}
+	
+	private static void ListarMascotas() {
+		System.out.println("--- LISTA DE MASCOTAS ---");
+		if (clinica.getMascotas().isEmpty()) {
+			System.out.println("No hay mascotas registradas.");
+			return;
+		}
+		for (Mascota m : clinica.getMascotas()) {
+			System.out.println("Código: " + m.getCodigo() + " | Nombre: " + m.getNombre() + " | Propietario: " + m.getNombrePropietario());
+		}
+	}
+	
+	private static void buscarMascotaMenu(String nombre) {
+		System.out.println("--- BÚSQUEDA DE MASCOTAS EN " + nombre + " ---");
+		System.out.print("Ingrese el código de la mascota a buscar: ");
+		String codigo = sc.nextLine();
+		Mascota m = clinica.buscarMascota(codigo);
+		
+		if (m != null) {
+			System.out.println("Mascota encontrada: " + m.getNombre() + " | Tipo: " + m.getTipo());
+		} else {
+			System.out.println("No se encontró ninguna mascota con ese código.");
+		}
+	}
+	
 
 }
