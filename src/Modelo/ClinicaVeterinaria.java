@@ -29,5 +29,12 @@ public class ClinicaVeterinaria {
 		}
 		return false;
 	}
-	//public double calcularValorTotal() {}
+	public double calcularValorTotal() {
+		double valorTotal = 0;
+		for (Mascota m : mascotas) {
+			valorTotal += m.calcularCostoCOnsulta();
+		}
+		return valorTotal;
+		
+	}
 }
