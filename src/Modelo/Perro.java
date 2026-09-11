@@ -13,7 +13,7 @@ public class Perro extends Mascota implements Vacunable, Peluqueable {
 	@Override
 	public void vacunar() {
 		if (vacunado) {
-			throw new IllegalArgumentException(getNombre() + "Ya esta vacuando");
+			throw new IllegalStateException(getNombre() + "Ya esta vacuando");
 		}
 		else {
 			vacunado = true;
