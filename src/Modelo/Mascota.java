@@ -9,7 +9,11 @@ public abstract class Mascota {
 	
 	public Mascota(String codigo, String nombre, int edad, double peso, String nombrePropietario) {
 	this.codigo = codigo;
-	
+	getNombre();
+	getEdad();
+	getPeso();
+	getNombrePropietario();
+	verificarInvariante();
 	}
 
 	public String getNombre() {
@@ -17,18 +21,29 @@ public abstract class Mascota {
 	}
 
 	public void setNombre(String nombre) {
-		if 
-		this.nombre = nombre;
+		if (nombre != null && !nombre.trim().isEmpty() ) {
+			this.nombre = nombre;
+		}
+		else {
+			throw new IllegalArgumentException("El nombre no puede estar vacio");
+		}
 	}
 
 
 	public int getEdad() {
-		return edad;
+			return edad;
 	}
 
 
 	public void setEdad(int edad) {
-		this.edad = edad;
+		if (edad < 0 ) {
+			this.edad = edad;
+		}
+		else {
+			throw new IllegalArgumentException("La edad no puede ser mayor");
+		}
+	
+		
 	}
 
 
@@ -38,7 +53,12 @@ public abstract class Mascota {
 
 
 	public void setPeso(double peso) {
-		this.peso = peso;
+		if (peso < 0 ) {
+			this.peso = peso;
+		}
+		else {
+			throw new IllegalArgumentException("El peso no puede ser menor que 0");
+		}
 	}
 
 	public String getNombrePropietario() {
@@ -46,15 +66,25 @@ public abstract class Mascota {
 	}
 
 	public void setNombrePropietario(String nombrePropietario) {
-		this.nombrePropietario = nombrePropietario;
+		if (nombrePropietario != null && !nombrePropietario.trim().isEmpty() ) {
+			this.nombrePropietario = nombrePropietario;
+		}
+		else {
+			throw new IllegalArgumentException("El nombre del propietario no puede estar vacio");
+		}
+		
 	}
 
 	public String getCodigo() {
 		return codigo;
 	}
 
-	private void invariante() {
-		assert codigo != null && !codigo.isEmpty() : "Error el codigo no puede estar vacio" ;
+	private void verificarInvariante() {
+		assert codigo != null && !codigo.trim().isEmpty() : "Error, el codigo no puede estar vacio" ;
+		assert nombre != null && !codigo.trim().isEmpty() : "Error, el nombre no puede estar vacio";
+		assert peso < 0 : "Error, el peso tiene que ser mayor que 0";
+		assert edad < 0 : "Error, la edad tiene que ser mayor que 0";
+		assert nombrePropietario != null && !nombrePropietario.trim().isEmpty() : "Error, el nombre del propietario no puede estar vacio";
 	}
 	
 }
