@@ -11,11 +11,11 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		System.out.println("Bienvenidos");
-		
+		String nombreClinica = "";
 		while(clinica == null) {
 			try {
 			System.out.println("Ingrese el Nombre de la clinica veterinaria");
-			String nombreClinica = sc.nextLine();
+			nombreClinica = sc.nextLine();
 			clinica = new ClinicaVeterinaria(nombreClinica);
 			} catch (IllegalArgumentException e) {
 				System.out.println("Error " + e.getMessage());
@@ -23,7 +23,7 @@ public class Principal {
 		}
 		int opcion = -1;
 		do {
-			mostrarMenu();
+			mostrarMenu(nombreClinica);
 			try {
 				
 				opcion = Integer.parseInt(sc.nextLine().trim());
@@ -42,7 +42,7 @@ public class Principal {
 					}
 					case 3:
 					{
-						buscarMascotaMenu();
+						buscarMascotaMenu(nombreClinica);
 						break;
 					}
 					case 4:
@@ -98,9 +98,9 @@ public class Principal {
 		
 	}
 	
-	private static void mostrarMenu() {
+	private static void mostrarMenu(String nombre) {
 		
-        System.out.println("============== MENÚ (" + clinica.getNombre() + ") ==============");
+        System.out.println("============== MENÚ (" + nombre + ") ==============");
         System.out.println("1. Registrar una mascota");
         System.out.println("2. Listar todas las mascotas");
         System.out.println("3. Buscar una mascota");
@@ -114,9 +114,9 @@ public class Principal {
         System.out.print("Seleccione una opción: ");
     }
 	
-	private static void registrarMascotaMenu() {
+	private static void registrarMascotaMenu(String nombre ) {
 		
-        System.out.println("============== MENÚ (" + clinica.getNombre() + ") ==============");
+        System.out.println("============== MENÚ (" + nombre  + ") ==============");
         System.out.println("Registrar una mascota");
         System.out.println("Tipo de mascota: 1. Perro | 2. Gato | 3. Ave");
         System.out.println("Seleccionar Tipo:");
