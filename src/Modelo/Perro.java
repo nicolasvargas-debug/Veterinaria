@@ -27,8 +27,16 @@ public class Perro extends Mascota implements Vacunable, Peluqueable {
 
 	@Override
 	public double calcularCostoPeluqueria() {
-		// TODO Auto-generated method stub //Falta por hacer 
-		return 0;
+		if (tamaño.equalsIgnoreCase("pequeño")) {
+			return 30000;
+		}
+		else if(tamaño.equalsIgnoreCase("mediano")) {
+			return 40000;
+		}
+		else if(tamaño.equalsIgnoreCase("grande")) {
+			return 55000;
+		}
+		return -1;
 	}
 
 	@Override
@@ -43,8 +51,16 @@ public class Perro extends Mascota implements Vacunable, Peluqueable {
 
 	@Override
 	public double calcularCostoCOnsulta() {
-		// TODO Auto-generated method stub
-		return 0;
+		if (tamaño.equalsIgnoreCase("pequeño")){
+			return 40000;
+		}
+		else if (tamaño.equalsIgnoreCase("mediano")){
+			return 40000;
+		}
+		else if (tamaño.equalsIgnoreCase("grande")){
+			return 40000;
+		}
+		return -1;
 	}
 	
 	
